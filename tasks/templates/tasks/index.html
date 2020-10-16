@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block title %}Информация по категориям{% endblock %}
-
 {% block main_content %}
+<a href={% url "tasks:datatime" %}>Дата и время</a>
+
   <h1>Категории и числа</h1>
   <ul>
   {% for cat, todos_count in counts.items %}

@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from tasks.models import TodoItem, Category
+import datetime
+from django.views.decorators.cache import cache_page
 
 
 def index(request):
@@ -88,3 +90,8 @@ class TaskListView(ListView):
 class TaskDetailsView(DetailView):
     model = TodoItem
     template_name = "tasks/details.html"
+
+@cache_page(300)
+def testcash(request):
+    curr = datetime.datetime.now()
+    return render(request, "tasks/testcash.html",locals(), )
